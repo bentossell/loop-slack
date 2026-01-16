@@ -1,0 +1,55 @@
+# Loop Slack Configuration
+# Copy to config.yaml and fill in your values
+
+# Slack App credentials (from api.slack.com/apps)
+slack:
+  app_token: xapp-1-...      # Socket Mode token (starts with xapp)
+  bot_token: xoxb-...        # Bot token (starts with xoxb)
+  signing_secret: ...        # Signing secret for webhooks (optional if using Socket Mode)
+
+# GitHub (for creating issues, reading repos)
+github:
+  token: ghp_...             # Personal access token or GitHub App token
+
+# Factory/Droid API key (per-user keys override this default)
+factory:
+  default_api_key: ""        # Optional fallback key
+
+# Authorization
+# User IDs from Slack (find via: click profile → ⋮ → Copy member ID)
+auth:
+  admins:
+    - U12345678              # Full access: config, manage users, all repos
+  operators:
+    - U87654321              # Can start/stop loops, create tasks
+  # Everyone else in channel: read-only (view status)
+
+# Repos this bot can access
+# Users select from this list (prevents arbitrary repo access)
+repos:
+  - owner: yourusername
+    name: your-repo
+    default_branch: main
+    # Optional: path to prompt.md (defaults to ./prompt.md)
+    prompt_path: prompt.md
+  
+  - owner: yourusername
+    name: another-repo
+    default_branch: main
+
+# Per-user Factory API keys
+# If a user has a key here, it's used instead of the default
+user_keys:
+  U12345678: fac_...
+  U87654321: fac_...
+
+# Concurrency settings
+concurrency:
+  max_parallel_loops: 3      # Max loops running at once (across all repos)
+  max_per_repo: 1            # Max loops per repo (usually 1 to avoid conflicts)
+
+# Notifications
+notifications:
+  update_interval_ms: 5000   # How often to post progress updates
+  thread_updates: true       # Post updates in threads (cleaner)
+  pin_status: true           # Pin a live status message to channel

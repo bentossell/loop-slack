@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Config (contains secrets)
+config.yaml
+
+# State
+*.db
+*.db-journal
+
+# Workspaces (cloned repos)
+workspaces/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
