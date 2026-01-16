@@ -14,7 +14,7 @@ function getOctokit(): Octokit {
 export interface Issue {
   number: number;
   title: string;
-  body: string | null;
+  body: string | null | undefined;
   labels: string[];
   state: string;
   html_url: string;
@@ -149,7 +149,7 @@ export async function getOpenPRs(owner: string, repo: string): Promise<PR[]> {
     title: pr.title,
     html_url: pr.html_url,
     state: pr.state,
-    merged: pr.merged || false,
+    merged: false, // List endpoint doesn't return merged status, only open PRs anyway
   }));
 }
 

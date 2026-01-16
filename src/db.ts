@@ -1,7 +1,7 @@
-import Database from 'better-sqlite3';
+import Database, { type Database as DatabaseType } from 'better-sqlite3';
 import { randomUUID } from 'crypto';
 
-const db = new Database('loop-slack.db');
+const db: DatabaseType = new Database('loop-slack.db');
 
 // Initialize schema
 db.exec(`
